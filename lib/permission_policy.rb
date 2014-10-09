@@ -9,6 +9,9 @@ module PermissionPolicy
     end
   end
 
+  autoload :Authorization, 'permission_policy/authorization'
+  autoload :MissingPrecondition, 'permission_policy/errors/missing_precondition'
+
   class << self
     attr_accessor :configuration
 
