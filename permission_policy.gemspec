@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = PermissionPolicy::VERSION
   spec.authors       = ['Marco Schaden', 'Maximilian Schulz']
   spec.email         = ['marco@railslove.com', 'max@railslove.com']
-  spec.summary       = %q{Without order, there is chaos}
-  spec.description   = %q{Expandable object oriented authorization solution for Ruby/Rails applications}
+  spec.summary       = 'Without order, there is chaos'
+  spec.description   = 'Expandable object oriented authorization solution for Ruby/Rails applications'
   spec.homepage      = ''
   spec.license       = 'MIT'
 
@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rspec', '~> 3.0.0'
+  spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rubocop'
 end

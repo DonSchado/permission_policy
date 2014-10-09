@@ -1,0 +1,56 @@
+AllCops:
+  Exclude:
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/Guardfile'
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Max: 120 # this is already a lot
+
+Lint/AssignmentInCondition:
+  Enabled: false # it can be a nice shortcut
+
+Style/Documentation:
+  Enabled: false # atm we don't need this
+
+Style/DoubleNegation:
+  Enabled: false # the double !! are great for explicitly return true or false
+
+Style/SignalException:
+  Enabled: false # prefer raise over fail
+
+Style/AndOr:
+  Enabled: false # for controlflow 'and' & 'or' are great
+  # but yes they can be tricky because of their operational precendence:
+  # http://ruby-doc.org/core-2.0/doc/syntax/precedence_rdoc.html
+
+Metrics/CyclomaticComplexity:
+  # count of the number of linearly independent paths
+  Max: 4 # don't go ever higher than 5, because then it makes no sense at all.
+  # for a tradeoff you can disable it locally in a section of a file with:
+  # rubocop:disable Metrics/CyclomaticComplexity
+
+Metrics/PerceivedComplexity:
+  # the perceived complexity is often higher than the cyclomatic complexity
+  Max: 5 # the optimal value can be different for each developer depending on the experience
+  # for a tradeoff you can disable it locally in a section of a file with:
+  # rubocop:disable Metrics/PerceivedComplexity
+
+Metrics/MethodLength:
+  Max: 10 # this is already a lot, but for some controller actions a big if/else is more readable
+
+Style/GuardClause:
+  Enabled: false # usually this blows up the line over the maximum line length
+
+Style/WordArray:
+  Enabled: false # sometimes not as readable as plain string array
+
+Style/TrailingComma:
+  Enabled: false # we think it's good practice, because of cleaner git diffs
+
+Style/RegexpLiteral:
+  Enabled: false # we like %r{} a lot
+
+Style/RaiseArgs:
+  Enabled: false # don't agree
