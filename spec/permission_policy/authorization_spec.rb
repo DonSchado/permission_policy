@@ -15,6 +15,10 @@ module PermissionPolicy
         expect(subject.my_user).to eq('foo')
         expect(subject.my_account).to eq('bar')
       end
+
+      it 'remembers precondition attributes' do
+        expect(subject.preconditions).to eq([:my_user, :my_account])
+      end
     end
 
     context 'invalid' do
