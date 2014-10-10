@@ -9,7 +9,7 @@ module PermissionPolicy
     context 'valid' do
       let(:context) { double('context', my_user: 'foo', my_account: 'bar') }
 
-      it 'sets attribute readers each precondition' do
+      it 'sets attribute readers for each precondition' do
         expect(subject.my_user).to eq('foo')
         expect(subject.my_account).to eq('bar')
       end
