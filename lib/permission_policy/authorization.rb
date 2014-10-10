@@ -5,7 +5,7 @@ module PermissionPolicy
     def initialize(context)
       @preconditions = []
 
-      PermissionPolicy.config.preconditions.each do |precondition|
+      PermissionPolicy.preconditions.each do |precondition|
         set! precondition, context.public_send(precondition)
         @preconditions << precondition
       end
@@ -39,9 +39,7 @@ module PermissionPolicy
 
     # Finds the matching strategy which can decide if the action is allowed by lazy checking
     def strategy_for(*args)
-      PermissionPolicy.config.strategies.lazy.map do |klass|
-        Strategies.const_get(klass).new(self, *args)
-      end.find(&:match?)
+      PermissionPolicy.strategies.lazy.map { |klass| Strategies.const_get(klass).new(self, *args) }.find(&:match?)
     end
 
     def set!(var, value)

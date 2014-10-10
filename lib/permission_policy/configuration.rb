@@ -12,6 +12,9 @@ module PermissionPolicy
   class << self
     attr_accessor :configuration
 
+    extend Forwardable
+    delegate [:preconditions, :strategies] => :config
+
     def configure
       yield(config)
     end
