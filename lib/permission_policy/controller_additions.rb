@@ -1,12 +1,25 @@
+require 'active_support/concern'
+
 module PermissionPolicy
   module ControllerAdditions
-    helper_method :allowed?
+    module ClassMethods
+      def authorize_with(*args)
+        PermissionPolicy.authorize_with(*args)
+      end
+    end
 
-    delegate :allowed?, to: :permission_policy
-    delegate :authorize!, to: :permission_policy
+    module InstanceMethods
+      extend ActiveSupport::Concern
 
-    def permission_policy
-      @permission_policy ||= PermissionPolicy::Authorization.new(self)
+      included do
+        helper_method :allowed?
+        delegate :allowed?, to: :permission_policy
+        delegate :authorize!, to: :permission_policy
+      end
+
+      def permission_policy
+        @permission_policy ||= PermissionPolicy::Authorization.new(self)
+      end
     end
   end
 end
