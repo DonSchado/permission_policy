@@ -1,9 +1,7 @@
 module PermissionPolicy
   RSpec.describe 'Authorization' do
     before do
-      PermissionPolicy.configure do |c|
-        c.precondition_attributes = [:my_user, :my_account]
-      end
+      PermissionPolicy.authorize_with :my_user, :my_account
     end
 
     subject { PermissionPolicy::Authorization.new(context) }

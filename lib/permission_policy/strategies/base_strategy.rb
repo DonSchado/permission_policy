@@ -14,7 +14,7 @@ module PermissionPolicy
       # options:: A hash having :subject or :feature as keys
       attr_accessor :action, :options
 
-      def initialize(authorization, action=nil, options={})
+      def initialize(authorization, action = nil, options = {})
         authorization.preconditions.each do |attribute|
           self.class.send(:attr_accessor, attribute)
           instance_variable_set(:"@#{attribute}", authorization.public_send(attribute))
