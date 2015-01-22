@@ -7,13 +7,21 @@ module PermissionPolicy
     def strategies
       strategy_order || [:UnknownStrategy]
     end
+
+    def log(message)
+      logging.debug(message) && !!debug_logger
+    end
+
+    def logging
+      logger || Logger.new(STDOUT)
+    end
   end
 
   class << self
     attr_accessor :configuration
 
     extend Forwardable
-    delegate [:preconditions, :strategies] => :config
+    delegate [:preconditions, :strategies, :log] => :config
 
     def configure
       yield(config)

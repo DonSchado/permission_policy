@@ -39,7 +39,11 @@ module PermissionPolicy
 
     # Finds the matching strategy which can decide if the action is allowed by lazy checking
     def strategy_for(*args)
-      PermissionPolicy.strategies.lazy.map { |klass| Strategies.const_get(klass).new(self, *args) }.find(&:match?)
+      PermissionPolicy.strategies.lazy.map { |klass| Strategies.const_get(klass).new(self, *args) }.find do |s|
+        s.match?.tap do |match|
+          PermissionPolicy.log "#{s.class.name} #{match ? 'matched' : 'not matched'}"
+        end
+      end
     end
 
     def set!(var, value)
