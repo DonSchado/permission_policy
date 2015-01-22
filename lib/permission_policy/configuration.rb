@@ -9,7 +9,7 @@ module PermissionPolicy
     end
 
     def log(message)
-      logging.debug(message) && !!debug_logger
+      logging.debug(message) if debug_logger
     end
 
     def logging
