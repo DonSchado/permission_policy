@@ -1,4 +1,9 @@
 
+# 0.0.6
+
+  * [ENHANCEMENT] moar convenience with `skip_verify_authorization`
+  * [BUGFIX] `@permission_policy` might be `nil`
+
 # 0.0.5
 
   * [REVERT] the logger was a good idea, but I'm not happy with the implementation
