@@ -7,8 +7,12 @@ module PermissionPolicy
         PermissionPolicy.authorize_with(*args)
       end
 
-      def verify_authorization!(setting = true)
-        PermissionPolicy.verify_authorization!(setting)
+      def verify_authorization!
+        PermissionPolicy.verify_authorization!(true)
+      end
+
+      def skip_verify_authorization
+        PermissionPolicy.verify_authorization!(false)
       end
     end
 
@@ -27,7 +31,7 @@ module PermissionPolicy
       end
 
       def verify_authorization
-        raise PermissionPolicy::NotVerified unless @permission_policy.verified
+        raise PermissionPolicy::NotVerified unless permission_policy.verified
       end
     end
   end
