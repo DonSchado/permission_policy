@@ -2,6 +2,7 @@ require 'action_controller'
 
 class MetalTestController < ActionController::Metal
   include AbstractController::Helpers
+  include AbstractController::Callbacks
   include PermissionPolicy::ControllerAdditions::InstanceMethods
   extend PermissionPolicy::ControllerAdditions::ClassMethods
 

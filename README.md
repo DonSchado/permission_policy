@@ -29,7 +29,6 @@ In a Rails App you can configure the gem with simple initializer file under `con
 ```
   PermissionPolicy.configure do |c|
     # c.precondition_attributes = [:current_user] # => default
-    c.debug_logger = true # => useful for debugging which strategy matched
     c.strategy_order = [
       :SuperAdminStrategy,
       :FeatureStrategy,
@@ -37,6 +36,19 @@ In a Rails App you can configure the gem with simple initializer file under `con
       :UnknownStrategy
     ]
   end
+```
+
+You can also configure this inside your Application Controller
+
+```
+
+  class ApplicationController < ActionController::Base
+    # ...
+    authorize_with :current_user
+    verify_authorization! => which will raise an NotVerified Exception if authorized! wasn't called
+    # ...
+  end
+
 ```
 
 The main idea is that strategies decide if they are responsible for authorization.

@@ -8,12 +8,8 @@ module PermissionPolicy
       strategy_order || [:UnknownStrategy]
     end
 
-    def log(message)
-      logging.debug(message) if debug_logger
-    end
-
-    def logging
-      logger || Logger.new(STDOUT)
+    def verification
+      verify_authorization || false
     end
   end
 
@@ -21,7 +17,7 @@ module PermissionPolicy
     attr_accessor :configuration
 
     extend Forwardable
-    delegate [:preconditions, :strategies, :log] => :config
+    delegate [:preconditions, :strategies, :verification] => :config
 
     def configure
       yield(config)
@@ -33,6 +29,10 @@ module PermissionPolicy
 
     def authorize_with(*args)
       configure { |c| c.precondition_attributes = *args }
+    end
+
+    def verify_authorization!(setting)
+      configure { |c| c.verify_authorization = setting }
     end
   end
 end
