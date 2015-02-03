@@ -6,6 +6,21 @@
 * dependencies
 
 
+## Authorization is hard
+
+There are plenty of diferent solutions to this problem.
+Because the requirements can be very difficult and as the system grows the problems become even worse. Exspecially when you need to support change.
+The hardest part may be thight coupling and issues with encapsulation through the whole application.
+To avoid repetitive and grwoing if/else branches you want a single responsible system.
+
+In general, the permission policy defines and controls whether a current **object** (usually the user) can perform a specific **action** on a given **subject**. This decision is commonly based on one or more
+factors:
+
+* role
+* type (or a set of attributes)
+* enabled features / areas of the application
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
