@@ -29,8 +29,11 @@ module PermissionPolicy
         expect(subject.permission_policy).to be_kind_of(PermissionPolicy::Authorization)
       end
 
-      it 'is initialized with preconditions' do
+      it 'is initialized with precondition foo' do
         expect(subject.permission_policy.foo).to eq('foo')
+      end
+
+      it 'is initialized with precondition bar' do
         expect(subject.permission_policy.bar).to eq('bar')
       end
     end

@@ -27,7 +27,7 @@ module PermissionPolicy
       end
 
       def permission_policy
-        @permission_policy ||= PermissionPolicy::Authorization.new(self)
+        @permission_policy = PermissionPolicy::Authorization.new(self)
       end
 
       def verify_authorization
