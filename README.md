@@ -39,28 +39,13 @@ Or install it yourself as:
 
 You might want to configure which objects are needed for your permission handling.
 
-In a Rails App you can configure the gem with simple initializer file under `config/initializers/permission_policy.rb`.
-
-```
-  PermissionPolicy.configure do |c|
-    # c.precondition_attributes = [:current_user] # => default
-    c.strategy_order = [
-      :SuperAdminStrategy,
-      :FeatureStrategy,
-      :RuleStrategy,
-      :UnknownStrategy
-    ]
-  end
-```
-
-You can also configure this inside your Application Controller
-
 ```
 
   class ApplicationController < ActionController::Base
     # ...
     authorize_with :current_user
     verify_authorization! => which will raise an NotVerified Exception if authorized! wasn't called
+    authorization_strategies :SuperAdminStrategy, :FeatureStrategy, :UnknownStrategy
     # ...
   end
 
