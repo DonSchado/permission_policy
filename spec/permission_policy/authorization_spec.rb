@@ -1,13 +1,9 @@
 module PermissionPolicy
   RSpec.describe 'Authorization' do
-    before do
-      PermissionPolicy.authorize_with :my_user, :my_account
-    end
-
-    subject { PermissionPolicy::Authorization.new(context) }
+    subject { PermissionPolicy::Authorization.new(controller_context) }
 
     context 'valid' do
-      let(:context) { double('context', my_user: 'foo', my_account: 'bar') }
+      let(:controller_context) { double('context', authorization_preconditions: [:my_user, :my_account], my_user: 'foo', my_account: 'bar') }
 
       it 'sets attribute readers for each precondition' do
         expect(subject.my_user).to eq('foo')
@@ -20,7 +16,7 @@ module PermissionPolicy
     end
 
     context 'invalid' do
-      let(:context) { double('context', my_user: nil, my_account: nil) }
+      let(:controller_context) { double('context', authorization_preconditions: [:my_user, :my_account], my_user: nil, my_account: nil) }
 
       it 'raises missing precondition error' do
         expect { subject }.to raise_error('missing precondition: my_user')

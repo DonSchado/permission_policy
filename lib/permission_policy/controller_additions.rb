@@ -3,16 +3,20 @@ require 'active_support/concern'
 module PermissionPolicy
   module ControllerAdditions
     module ClassMethods
-      def authorize_with(*args)
-        PermissionPolicy.authorize_with(*args)
+      def authorize_with(*preconditions)
+        define_method('authorization_preconditions') { preconditions }
       end
 
       def verify_authorization!
-        PermissionPolicy.verify_authorization!(true)
+        define_method('authorization_verification?') { true }
       end
 
       def skip_verify_authorization
-        PermissionPolicy.verify_authorization!(false)
+        define_method('authorization_verification?') { false }
+      end
+
+      def authorization_strategies(*strategies)
+        define_method('authorization_strategies') { strategies }
       end
     end
 
@@ -23,11 +27,11 @@ module PermissionPolicy
         helper_method :allowed?
         delegate :allowed?, to: :permission_policy
         delegate :authorize!, to: :permission_policy
-        after_action -> { verify_authorization if PermissionPolicy.verification }
+        after_action -> { verify_authorization if authorization_verification? }
       end
 
       def permission_policy
-        @permission_policy = PermissionPolicy::Authorization.new(self)
+        @permission_policy ||= PermissionPolicy::Authorization.new(self)
       end
 
       def verify_authorization

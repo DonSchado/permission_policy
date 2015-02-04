@@ -137,6 +137,13 @@ You can extend the permission policy by:
  - implement new permission strategies, which help the policy to find the 'decider'
 
 
+## possible ideas/improvements:
+
+- support skip_verify_authorization only:/except: [:actions]
+- register features and roles in the policy
+- raise NoSuchFeature
+- get available "permissions" for role/subject/feature
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/permission_policy/fork )
