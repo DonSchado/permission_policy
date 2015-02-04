@@ -1,4 +1,8 @@
 
+# 0.1.0
+
+  * [REFACTORING] change the way *configuration* is handled (breaking changes)
+
 # 0.0.6
 
   * [ENHANCEMENT] moar convenience with `skip_verify_authorization`
