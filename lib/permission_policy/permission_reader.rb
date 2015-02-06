@@ -28,7 +28,7 @@ module PermissionPolicy
     def permitted?(feature, action, role)
       ensure_definition!(feature, action, role)
 
-      permissions[feature][action].include? role
+      permissions[feature][action] && permissions[feature][action].include?(role)
     end
 
     private
