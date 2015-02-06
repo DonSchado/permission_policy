@@ -1,4 +1,9 @@
 
+# 0.1.2
+
+  * [EXPERIMENTAL BUGFIX] possibility to read yml permission file
+
+
 # 0.1.1
 
   * [EXPERIMENT] possibility to read yml permission file
