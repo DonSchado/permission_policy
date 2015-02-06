@@ -1,0 +1,27 @@
+---
+roles: &roles
+  - super_admin
+  - foo
+  - bar
+  - baz
+
+permissions:
+  fancy_feature:
+    index:
+      - super_admin
+      - foo
+    show: *roles
+    create: *roles
+    update: *roles
+    delete:
+      - super_admin
+  user_management:
+    index:
+      - super_admin
+    show:
+      - baz
+    create:
+    update: *roles
+    delete:
+      - super_admin
+

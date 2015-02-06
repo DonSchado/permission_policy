@@ -35,6 +35,10 @@ Or install it yourself as:
 
     $ gem install permission_policy
 
+# API
+
+todo: describe each public method
+
 ## Usage
 
 You might want to configure which objects are needed for your permission handling.

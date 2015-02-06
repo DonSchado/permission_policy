@@ -9,6 +9,8 @@ module PermissionPolicy
   autoload :MissingPrecondition, 'permission_policy/errors/missing_precondition'
   autoload :NotAllowed, 'permission_policy/errors/not_allowed'
   autoload :NotVerified, 'permission_policy/errors/not_verified'
+  autoload :ReaderError, 'permission_policy/errors/reader_error'
+  autoload :PermissionReader, 'permission_policy/permission_reader'
 
   module Strategies
     autoload :BaseStrategy, 'permission_policy/strategies/base_strategy'
