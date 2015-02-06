@@ -1,4 +1,9 @@
 
+# 0.1.1
+
+  * [EXPERIMENT] possibility to read yml permission file
+
+
 # 0.1.0
 
   * [REFACTORING] change the way *configuration* is handled (breaking changes)
