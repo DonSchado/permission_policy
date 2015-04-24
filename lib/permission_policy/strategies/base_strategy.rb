@@ -17,7 +17,7 @@ module PermissionPolicy
       def initialize(authorization, action = nil, options = {})
         authorization.preconditions.each do |attribute|
           self.class.send(:attr_accessor, attribute)
-          instance_variable_set(:"@#{attribute}", authorization.public_send(attribute))
+          instance_variable_set(:"@#{attribute}", authorization.context.public_send(attribute))
         end
 
         self.action = action

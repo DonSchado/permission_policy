@@ -1,6 +1,6 @@
 module PermissionPolicy
   class Authorization
-    attr_reader :preconditions, :verified
+    attr_reader :preconditions, :verified, :context
 
     def initialize(context)
       @preconditions = []
