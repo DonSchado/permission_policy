@@ -3,7 +3,8 @@ module PermissionPolicy
     RSpec.describe BaseStrategy do
 
       context 'valid' do
-        let(:authorization) { double('authorization', preconditions: [:current_user], current_user: 'me') }
+        let(:context) { double('context', current_user: 'me') }
+        let(:authorization) { double('authorization', preconditions: [:current_user], context: context) }
         let(:action) { :foo }
         let(:options) { { something: 'nice' } }
 
