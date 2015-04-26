@@ -1,4 +1,9 @@
 
+# 0.1.3
+
+  * [BUGFIX] Always ask for the current value in the context and do not memoize
+
+
 # 0.1.2
 
   * [EXPERIMENTAL BUGFIX] possibility to read yml permission file
